@@ -1,0 +1,118 @@
+﻿@model VerifyMe.Models.Students
+
+@{
+    ViewBag.Title = "StudentDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="about-section-four" style="margin-top:100px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 mx-auto">
+                <div class="card card-signin my-5">
+                    <div class="card-body">
+                        <div>
+                            <h4>Students</h4>
+                            <hr />
+                            <dl class="dl-horizontal">
+    
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.FirstName)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.FirstName)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.LastName)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.LastName)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.MiddleName)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.MiddleName)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.DateOfBirth)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.DateOfBirth)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.MatricNumber)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.MatricNumber)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Course)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Course)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.YearOfGraduation)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.YearOfGraduation)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.YearOfMatriculation)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.YearOfMatriculation)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Email)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Email)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Sex)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Sex)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.CertificateNumber)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.CertificateNumber)
+                                </dd>
+
+                            </dl>
+                        </div>
+                        <p>
+                            @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+                            @Html.ActionLink("Back to List", "Index")
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

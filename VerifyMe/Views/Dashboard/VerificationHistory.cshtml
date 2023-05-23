@@ -1,0 +1,110 @@
+﻿@using VerifyMe.Models;
+@model Organisation
+
+@{
+    ViewBag.Title = "Verification History";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<div class="container-fluid">
+    <!-- Breadcrumb and right sidebar toggle -->
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h4 class="text-themecolor">Verification History</h4>
+        </div>
+        <div class="col-md-7 align-self-center text-end">
+            <div class="d-flex justify-content-end align-items-center">
+                <ol class="breadcrumb justify-content-end">
+                    <li class="breadcrumb-item"><a href="/Dashboard/Index">Home</a></li>
+                    <li class="breadcrumb-item active">Verification History</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!-- End breadcrumb and right sidebar toggle -->
+    <!-- Start Page Content -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">All Verifications</h5>
+                    <hr>
+                    @if (ViewBag.VerificationHistory == null)
+                    {
+                        <center><p>You have done no verifications</p></center>
+                    }
+                    else
+                    {
+                        using (Html.BeginForm("VerificationHistory", "Dashboard", FormMethod.Get))
+                        {
+                            <table cellspacing="0" cellpadding="0" border="0" width="100%" class="table datatable-show-all">
+                                <tbody>
+                                    <tr>
+                                       
+                                        <td>
+                                            <div class="form-horizontal">
+                                                <div class="form-group form-group-sm">
+                                                    <div class="col-md-4">
+                                                        <label>From:</label>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        @Html.TextBox("startdate", null, new { @class = "form-control datepicker inpts", @Type = "Date", @id = "startdate", @name = "startdate" })
+                                                    </div>
+                                                </div>
+                                                <div class="form-group form-group-sm">
+                                                    <div class="col-md-4">
+                                                        <label>To:</label>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        @Html.TextBox("enddate", null, new { @class = "form-control datepicker inpts", @Type = "Date", @id = "enddate", @name = "enddate" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group-sm">
+                                                <div class="col-md-offset-2 col-md-10">
+                                                    <input type="submit" value="Go" class="btn btn-default" />
+                                                    <span></span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        }
+
+                        <div class="table-responsive">
+                            <table id="myTable" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Course</th>
+                                        <th>Date Graduated</th>
+                                        <th>Certificate Number</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in ViewBag.VerificationHistory)
+                                    {
+                                        <tr>
+                                            <td>@item.EmpFirstName</td>
+                                            <td>@item.EmpLastName</td>
+                                            <td>@item.CourseOffered</td>
+                                            <td>@item.YearGraduated</td>
+                                            <td>@item.CertificateNumber</td>
+                                            <td>@item.VericationStatus</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Page Content -->
+</div>

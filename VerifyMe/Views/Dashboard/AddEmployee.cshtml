@@ -1,0 +1,249 @@
+﻿@model VerifyMe.Models.Employee
+@{
+    ViewBag.Title = "AddEmployee";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+<div class="container-fluid">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h4 class="text-themecolor">Verify Employee</h4>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Start Page Content -->
+    <!-- ============================================================== -->
+
+
+   @if (TempData["Status"] != null)
+   {
+    <div class="alert alert-success">
+        @TempData["Status"]
+    </div>
+   }
+
+    
+    @using (Html.BeginForm("AddEmployee", "Dashboard", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-uppercase">Basic Information</h5>
+                  
+                      <form class="form-material">
+                        <div class="form-group">
+                            <div class="row">
+
+                                <label class="col-md-12" for="example-text">
+                                   First Name
+                                </label>
+                                <div class="col-md-12">
+                                    @Html.TextBoxFor(m => m.EmpFirstName, new { @class = "form-control", @placeholder = "Enter employee first name" })
+                                    @Html.ValidationMessageFor(m => m.EmpFirstName, "", new { @class = "text-danger" })
+                               
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-md-12" for="example-text">
+                                    Middle Name
+                                </label>
+                                <div class="col-md-12">
+                                    @Html.TextBoxFor(m => m.EmpMiddleName, new { @class = "form-control", @placeholder = "Enter employee middle name" })
+                                    @Html.ValidationMessageFor(m => m.EmpMiddleName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-md-12" for="example-text">
+                                    Last Name
+                                </label>
+                                <div class="col-md-12">
+                                    @Html.TextBoxFor(m => m.EmpLastName, new { @class = "form-control", @placeholder = "Enter employee last name" })
+                                    @Html.ValidationMessageFor(m => m.EmpLastName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-sm-12">Gender</label>
+                                <div class="col-sm-12">
+                                    @Html.DropDownList("Gender", new SelectList(Enum.GetValues(typeof(VerifyMe.Models.Sex))), "Select Gender", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                          <div class="form-group">
+                              <div class="row">
+                                  <label class="col-md-12" for="bdate">
+                                      Date of Birth
+                                  </label>
+                                  <div class="col-md-12">
+                                      @Html.TextBoxFor(m => m.DateOfBirth, new { @class = "form-control", @placeholder = "Enter employee Date of Birth" })
+                                      @Html.ValidationMessageFor(m => m.DateOfBirth, "", new { @class = "text-danger" })
+                                  </div>
+                              </div>
+                          </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-md-12" for="example-text">
+                                    Year Enrolled
+                                </label>
+                                <div class="col-md-12">
+                                    @Html.TextBoxFor(m => m.YearEnrolled, new { @class = "form-control", @placeholder = "Enter employee year of enrollment" })
+                                    @Html.ValidationMessageFor(m => m.YearEnrolled, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-md-12" for="example-text">
+                                    Year Graduated
+                                </label>
+                                <div class="col-md-12">
+                                    @Html.TextBoxFor(m => m.YearGraduated, new { @class = "form-control", @placeholder = "Enter employee year of graduation" })
+                                    @Html.ValidationMessageFor(m => m.YearGraduated, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-md-12" for="example-text">
+                                    Matric Number
+                                </label>
+                                <div class="col-md-12">
+                                    @Html.TextBoxFor(m => m.MatricNumber, new { @class = "form-control", @placeholder = "Enter employee Matriculation Number" })
+                                    @Html.ValidationMessageFor(m => m.MatricNumber, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-md-12" for="example-text">
+                                    Course Offered
+                                </label>
+                                <div class="col-md-12">
+                                    @Html.TextBoxFor(m => m.CourseOffered, new { @class = "form-control", @placeholder = "Enter employee Course Name" })
+                                    @Html.ValidationMessageFor(m => m.CourseOffered, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-md-12" for="example-text">
+                                    Certificate Number
+                                </label>
+                                <div class="col-md-12">
+                                    @Html.TextBoxFor(m => m.CertificateNumber, new { @class = "form-control", @placeholder = "Enter employee Certificate Number" })
+                                    @Html.ValidationMessageFor(m => m.CertificateNumber, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                  
+                        @*<div class="form-group">
+                            <div class="row">
+                                <label class="col-sm-12">Profile Image</label>
+                                <div class="col-sm-12">
+                                    <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                                        <div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div> <span class="input-group-addon btn btn-default btn-file">
+                                            <span class="fileinput-new">Select file</span> <span class="fileinput-exists">Change</span>
+                                            <input type="file" name="...">
+                                        </span> <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-bs-dismiss="fileinput">Remove</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+                   
+          
+                        <button type="submit" class="btn btn-info waves-effect waves-light m-r-10 text-white">Verify</button>
+                        <button type="submit" class="btn btn-dark waves-effect waves-light">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Right sidebar -->
+    <!-- ============================================================== -->
+    <!-- .right-sidebar -->
+    @*<div class="right-sidebar ps ps--theme_default" data-ps-id="0094669d-697e-bd65-1ec5-8f0a19f1bdec">
+        <div class="slimscrollright">
+            <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
+            <div class="r-panel-body">
+                <ul id="themecolors" class="m-t-20">
+                    <li><b>With Light sidebar</b></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-default" class="default-theme">1</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-green" class="green-theme">2</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-red" class="red-theme">3</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-blue" class="blue-theme working">4</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-purple" class="purple-theme">5</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-megna" class="megna-theme">6</a></li>
+                    <li class="d-block m-t-30"><b>With Dark sidebar</b></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-default-dark" class="default-dark-theme ">7</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-green-dark" class="green-dark-theme">8</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-red-dark" class="red-dark-theme">9</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-blue-dark" class="blue-dark-theme">10</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-purple-dark" class="purple-dark-theme">11</a></li>
+                    <li><a href="javascript:void(0)" data-skin="skin-megna-dark" class="megna-dark-theme ">12</a></li>
+                </ul>
+                <ul class="m-t-20 chatonline">
+                    <li><b>Chat option</b></li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="../assets/images/users/1.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="../assets/images/users/2.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="../assets/images/users/3.jpg" alt="user-img" class="img-circle"> <span>Ritesh Deshmukh <small class="text-danger">Busy</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="../assets/images/users/4.jpg" alt="user-img" class="img-circle"> <span>Arijit Sinh <small class="text-muted">Offline</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="../assets/images/users/5.jpg" alt="user-img" class="img-circle"> <span>Govinda Star <small class="text-success">online</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="../assets/images/users/6.jpg" alt="user-img" class="img-circle"> <span>John Abraham<small class="text-success">online</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="../assets/images/users/7.jpg" alt="user-img" class="img-circle"> <span>Hritik Roshan<small class="text-success">online</small></span></a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)"><img src="../assets/images/users/8.jpg" alt="user-img" class="img-circle"> <span>Pwandeep rajan <small class="text-success">online</small></span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="ps__scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps__scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__scrollbar-y-rail" style="top: 0px; right: 0px;"><div class="ps__scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div></div>
+    </div>*@
+    <!-- ============================================================== -->
+    <!-- End Right sidebar -->
+    <!-- ============================================================== -->
+</div>
+

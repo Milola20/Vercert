@@ -1,0 +1,142 @@
+﻿@using VerifyMe.Models;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+  <!-- ============================================================== -->
+<div class="container-fluid">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <h4 class="text-themecolor">Admin Dashboard</h4>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Info box -->
+    <!-- ============================================================== -->
+    <!-- .row -->
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-uppercase">Verified Employees</h5>
+                    @*<div class="text-end">
+                        <span class="text-muted">Monthly Fees</span>
+                        <h2><sup><i class="ti-arrow-up text-success"></i></sup> $1200</h2>
+                    </div>*@
+                    <span class="text-success">@ViewBag.VerifiedEmployee</span>
+                    <div class="progress">
+                        <div class="progress-bar bg-success" style="width: 0%; height:6px;" role="progressbar"> <span class="sr-only">60% Complete</span> </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-uppercase">UnVerified Employees</h5>
+                    @*<div class="text-end">
+                        <span class="text-muted">Monthly Fees</span>
+                        <h2><sup><i class="ti-arrow-down text-primary"></i></sup> $5000</h2>
+                    </div>*@
+                    <span class="text-primary">@ViewBag.NVerifiedEmployee</span>
+                    <div class="progress">
+                        <div class="progress-bar bg-primary" style="width: 0%; height:6px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-uppercase">Pending Verification</h5>
+                    @*<div class="text-end">
+                        <span class="text-muted">Monthly Fees</span>
+                        <h2><sup><i class="ti-arrow-up text-info"></i></sup> $8000</h2>
+                    </div>*@
+                    <span class="text-info">@ViewBag.PVerifiedEmployee</span>
+                    <div class="progress">
+                        <div class="progress-bar bg-info" style="width: 0%; height:6px;" role="progressbar"> <span class="sr-only">60% Complete</span> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-uppercase">Total Verifications</h5>
+                    @*<div class="text-end">
+                        <span class="text-muted">Yearly Fees</span>
+                        <h2><sup><i class="ti-arrow-up text-inverse"></i></sup> $12000</h2>
+                    </div>*@
+                    <span class="text-inverse">@((int)ViewBag.VerifiedEmployee + (int)ViewBag.NVerifiedEmployee + (int)ViewBag.PVerifiedEmployee)</span>
+                    <div class="progress">
+                        <div class="progress-bar bg-inverse" style="width: 0%; height:6px;" role="progressbar"> <span class="sr-only">60% Complete</span> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Recent Verifications</h5>
+                        <hr>
+                        @if (ViewBag.vh == null)
+                        {
+                            <center><p> You have done no verifications</p></center>
+                        }
+                        else
+                        {
+
+                        <div class="table-responsive">
+                            <table id="myTable" class="table table-striped">
+                                <thead>
+                                    <tr>
+                    
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Course</th>
+                                        <th>Date Graduated</th>
+                                        <th>Cerificate Number</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ( var item in ViewBag.VerificationList)
+                                    {                                  
+                                    <tr>
+                                 
+                                        <td>@item.EmpFirstName</td>
+                                        <td>@item.EmpLastName</td>
+                                        <td>@item.CourseOffered</td>
+                                        <td>@item.YearGraduated</td>
+                                        <td>@item.CertificateNumber</td>
+                                        <td>@item.VericationStatus</td>
+                                    </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+
+</div>
+<!-- ============================================================== -->
+<!-- End Container fluid  -->
+<!-- ============================================================== -->
